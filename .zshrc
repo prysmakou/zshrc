@@ -2,11 +2,12 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 ZSH_DISABLE_COMPFIX=true
 export ZSH="/Users/Aliaksandr_Prysmakou/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 # Standard plugins can be found in $ZSH/plugins/
-plugins=(git docker)
+plugins=(git docker vi-mode)
+# see https://github.com/softmoth/zsh-vim-mode
 source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/opt/php@8.0/bin:$PATH"
 export PATH="/usr/local/opt/php@8.0/sbin:$PATH"
@@ -14,6 +15,7 @@ export PATH="/usr/local/opt/php@8.0/sbin:$PATH"
 export LDFLAGS="-L/usr/local/opt/php@8.0/lib"
 export CPPFLAGS="-I/usr/local/opt/php@8.0/include"
 
+alias cat="bat"
 #alias aws="docker run --rm -it \
 #   -e AWS_PROFILE -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -e AWS_SESSION_TOKEN \
 #   -v "~/.aws:/root/.aws" -v "$(pwd):/aws:rw" \
@@ -86,3 +88,24 @@ complete -C '/usr/local/bin/aws_completer' aws
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source /Users/Aliaksandr_Prysmakou/w/github/kube-ps1/kube-ps1.sh
 PROMPT='$(kube_ps1)'$PROMPT
+#bindkey -v
+function zle-keymap-select zle-line-init
+{
+    # change cursor shape in iTerm2
+    case $KEYMAP in
+        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+    esac
+
+    zle reset-prompt
+    zle -R
+}
+
+function zle-line-finish
+{
+    print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
