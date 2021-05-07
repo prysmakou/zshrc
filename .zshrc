@@ -1,6 +1,6 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 ZSH_DISABLE_COMPFIX=true
-export ZSH="/Users/Aliaksandr_Prysmakou/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
@@ -86,7 +86,7 @@ autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-source /Users/Aliaksandr_Prysmakou/w/github/kube-ps1/kube-ps1.sh
+source $HOME/.kube_ps1/kube-ps1.sh
 PROMPT='$(kube_ps1)'$PROMPT
 #bindkey -v
 function zle-keymap-select zle-line-init
