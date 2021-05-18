@@ -16,4 +16,6 @@ asdf install kubectl latest
 asdf global helm 3.5.4 
 asdf global kubectl 1.21.0
 git clone https://github.com/jonmosco/kube-ps1 ~/.kube_ps1
+# install git-secret hook
+git clone git@github.com:awslabs/git-secrets.git
 ```

@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
@@ -16,6 +16,8 @@ export LDFLAGS="-L/usr/local/opt/php@8.0/lib"
 export CPPFLAGS="-I/usr/local/opt/php@8.0/include"
 
 alias cat="bat"
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
 #alias aws="docker run --rm -it \
 #   -e AWS_PROFILE -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -e AWS_SESSION_TOKEN \
 #   -v "~/.aws:/root/.aws" -v "$(pwd):/aws:rw" \
