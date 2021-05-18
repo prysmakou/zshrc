@@ -6,7 +6,7 @@ DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 # Standard plugins can be found in $ZSH/plugins/
-plugins=(git docker vi-mode)
+plugins=(git docker vi-mode kubectl)
 # see https://github.com/softmoth/zsh-vim-mode
 source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/opt/php@8.0/bin:$PATH"
@@ -82,6 +82,7 @@ export NVM_DIR="$HOME/.nvm"
 . $HOME/.asdf/asdf.sh
 source <(kubectl completion zsh)
 source <(helm completion zsh)
+source <(stern --completion=zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 autoload bashcompinit && bashcompinit
