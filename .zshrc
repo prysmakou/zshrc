@@ -1,4 +1,5 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOPATH=$HOME/go
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
@@ -14,6 +15,7 @@ export PATH="/usr/local/opt/php@8.0/sbin:$PATH"
 # For compilers to find php@7.4 you may need to set:
 export LDFLAGS="-L/usr/local/opt/php@8.0/lib"
 export CPPFLAGS="-I/usr/local/opt/php@8.0/include"
+export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 
 alias cat="bat"
 #alias aws="docker run --rm -it \
@@ -71,6 +73,7 @@ alias cat="bat"
 #  mytools:0.0.1 /usr/local/bin/kops"
 alias da="direnv allow"
 alias zshrc="vi ~/.zshrc"
+alias vimrc="vi ~/.vimrc"
 eval "$(direnv hook zsh)"
 
 export NVM_DIR="$HOME/.nvm"
@@ -78,9 +81,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . $HOME/.asdf/asdf.sh
+# Autocompletion
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 source <(stern --completion=zsh)
+source <(minikube completion zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 autoload bashcompinit && bashcompinit
@@ -89,6 +94,7 @@ complete -C '/usr/local/bin/aws_completer' aws
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source $HOME/.kube_ps1/kube-ps1.sh
 PROMPT='$(kube_ps1)'$PROMPT
+# VI mode
 #bindkey -v
 function zle-keymap-select zle-line-init
 {
