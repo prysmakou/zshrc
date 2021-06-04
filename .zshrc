@@ -18,6 +18,8 @@ export CPPFLAGS="-I/usr/local/opt/php@8.0/include"
 export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 
 alias cat="bat"
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
 #alias aws="docker run --rm -it \
 #   -e AWS_PROFILE -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -e AWS_SESSION_TOKEN \
 #   -v "~/.aws:/root/.aws" -v "$(pwd):/aws:rw" \
